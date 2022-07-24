@@ -33,7 +33,7 @@ namespace MusicBeePlugin
             about.Author = "trev";
             about.Type = PluginType.General;
             about.VersionMajor = 1;
-            about.VersionMinor = 0;
+            about.VersionMinor = 1;
             about.Revision = 0;
             about.MinInterfaceVersion = 40;
             about.MinApiRevision = 52;
@@ -91,6 +91,7 @@ namespace MusicBeePlugin
                             break;
                         }
                     }
+
                     break;
             }
         }
@@ -115,7 +116,7 @@ namespace MusicBeePlugin
                 apiCallParameters.Add(CreatePair($"track[{i}]", song.Name));
                 apiCallParameters.Add(CreatePair($"artist[{i}]", song.Artist));
                 apiCallParameters.Add(CreatePair($"album[{i}]", song.AlbumName));
-                apiCallParameters.Add(CreatePair($"duration[{i}]", song.Duration.ToString()));
+                apiCallParameters.Add(CreatePair($"duration[{i}]", song.Duration < 30 ? "31" : song.Duration.ToString())); // Weird but allows for scrobbling tracks under 30 seconds
                 apiCallParameters.Add(CreatePair($"timestamp[{i}]", unixTimestamp.ToString()));
             }
 
