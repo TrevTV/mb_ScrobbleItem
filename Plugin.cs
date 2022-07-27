@@ -115,6 +115,7 @@ namespace MusicBeePlugin
                 long unixTimestamp = (long)startTime.Subtract(UnixStartTime).TotalSeconds;
                 apiCallParameters.Add(CreatePair($"track[{i}]", song.Name));
                 apiCallParameters.Add(CreatePair($"artist[{i}]", song.Artist));
+                apiCallParameters.Add(CreatePair($"albumArtist[{i}]", song.AlbumArtist));
                 apiCallParameters.Add(CreatePair($"album[{i}]", song.AlbumName));
                 apiCallParameters.Add(CreatePair($"duration[{i}]", song.Duration < 30 ? "31" : song.Duration.ToString())); // Weird but allows for scrobbling tracks under 30 seconds
                 apiCallParameters.Add(CreatePair($"timestamp[{i}]", unixTimestamp.ToString()));
