@@ -1,4 +1,4 @@
-# Scrobble Item [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S244CYE)
+# Scrobble Item
 MusicBee plugin that allows you to scrobble any album or track in your library without fully playing it.
 
 ## Installation
