@@ -70,7 +70,8 @@ namespace MusicBeePlugin
             switch (type)
             {
                 case NotificationType.PluginStartup:
-                    mbApiInterface.MB_AddMenuItem($"context.Main/Scrobble", "", MenuClicked);
+                    mbApiInterface.MB_AddMenuItem($"context.Main/Scrobble", "", ScrobbleSelected);
+                    mbApiInterface.MB_RegisterCommand("ScrobbleItem: Scrobble Selected", ScrobbleSelected);
 
                     // An unholy concoction of code to deal with obfuscation and the possibility of type and method names changing in later versions
                     var mbAsm = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.FullName.Contains("MusicBee"));
@@ -96,7 +97,7 @@ namespace MusicBeePlugin
             }
         }
 
-        public void MenuClicked(object sender, EventArgs args)
+        public void ScrobbleSelected(object sender, EventArgs args)
         {
             mbApiInterface.Library_QueryFilesEx("domain=SelectedFiles", out string[] files);
             if (files == null) return;
